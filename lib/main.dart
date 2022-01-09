@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_nv1/two_page.dart';
 
 import 'one_page.dart';
 
@@ -15,8 +16,12 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
-      theme: ThemeData(primaryColor: Colors.green),
-      home:  const OnePage(),
+      theme: ThemeData(primaryColor: Colors.green),      
+      initialRoute: '/',
+      routes: {
+        '/': (_) => const OnePage(),
+        '/twoPage' : (_) => const TwoPage()
+      }
       
     );
   }
