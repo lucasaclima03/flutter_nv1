@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
 class SplashPage extends StatefulWidget {
-  const SplashPage({ Key? key }) : super(key: key);
+  const SplashPage({Key? key}) : super(key: key);
 
   @override
   _SplashPageState createState() => _SplashPageState();
@@ -9,11 +9,19 @@ class SplashPage extends StatefulWidget {
 
 class _SplashPageState extends State<SplashPage> {
   @override
+  void initState() {
+    super.initState();
+    Future.delayed(const Duration(seconds: 3)).then(
+      (_) => Navigator.of(context).pushReplacementNamed('/login'),
+    );
+  }
+
+  @override
   Widget build(BuildContext context) {
     return Container(
-      color: Colors.green.shade900,
+      color: Colors.green.shade600,
       child: const Center(
-        child: CircularProgressIndicator(),
+        child: CircularProgressIndicator(color: Colors.white54),
       ),
     );
   }
