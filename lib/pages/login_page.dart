@@ -35,20 +35,27 @@ class LoginPage extends StatelessWidget {
                 ),
                 ValueListenableBuilder<bool>(
                   valueListenable: _controller.inLoader,
-                  builder: (_, inLoader, __) => inLoader ? const CircularProgressIndicator() : ElevatedButton(
-                    onPressed: () {
-                      _controller.auth().then(
-                        (result) {
-                          if (result) {
-                            print('success');
-                          } else {
-                            print('failed');
-                          }
-                        },
-                      );
-                    },
-                    child: const Text('Login'),
-                  ),
+                  builder: (_, inLoader, __) => inLoader
+                      ? const CircularProgressIndicator()
+                      : ElevatedButton(
+                          onPressed: () {
+                            _controller.auth().then(
+                              (result) {
+                                if (result) {
+                                  Navigator.of(context)
+                                      .pushReplacementNamed('/home');
+                                } else {
+                                  ScaffoldMessenger.of(context)
+                                      .showSnackBar(const SnackBar(
+                                    content: Text('Falha ao realizar login'),
+                                    duration: Duration(seconds: 5),                                    
+                                  ));
+                                }
+                              },
+                            );
+                          },
+                          child: const Text('Login'),
+                        ),
                 ),
               ],
             )));
