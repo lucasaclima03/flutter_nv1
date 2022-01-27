@@ -31,6 +31,8 @@ class _HomePageState extends State<HomePage> {
             return ListView.separated(
               itemCount: list.length,
               itemBuilder: (_, idx) => ListTile(
+                leading: Text(list[idx].id.toString()),
+                trailing: const Icon(Icons.arrow_forward),
                 title: Text(list[idx].title),
               ),
               separatorBuilder: (_,__) => const Divider() ,
